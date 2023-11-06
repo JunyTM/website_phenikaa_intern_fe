@@ -13,7 +13,7 @@ const Auth: React.FC<any> = ({ children: Children }: any) => {
       Cookies.remove("RefreshToken");
       navigate("/login");
     }
-  }, [Cookies.get("AccessToken"), Cookies.get("LDAPToken")]);
+  }, [Cookies.get("AccessToken")]);
 
   return (
     <React.Fragment>
