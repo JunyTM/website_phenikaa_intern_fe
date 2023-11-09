@@ -8,8 +8,9 @@ interface UseCallApiProps {
 }
 
 export const useCallApi = async (props: UseCallApiProps) => {
-  const baseURL = process.env.REACT_APP_BASE_URL;
+  const baseURL = import.meta.env.VITE_REACT_APP_BASE_URL;
   const { endPoint, headers, method, params, payload } = props;
+  console.log(baseURL + endPoint);
   try {
     const result = await axios({
       method,
@@ -18,7 +19,6 @@ export const useCallApi = async (props: UseCallApiProps) => {
       data: payload,
       params,
     });
-
     return {
       response: result,
       error: null,
