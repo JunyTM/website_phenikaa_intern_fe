@@ -57,7 +57,7 @@ export const APIS_URL = {
   ADVANCE: {
     filter: () => ({
       endPoint: "/advance-filter",
-      method: "GET",
+      method: "POST",
       headers: HEADERS.headerToken(),
     }),
   },

@@ -10,6 +10,8 @@ const Auth: React.FC<any> = ({ children: Children }: any) => {
       Cookies.remove("AccessToken");
       Cookies.remove("RefreshToken");
       navigate("/login");
+    } else {
+      navigate("/home");
     }
   }, [Cookies.get("AccessToken")]);
 

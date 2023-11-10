@@ -1,7 +1,7 @@
 import { UserLogin, UserRegister } from "./../../model/user";
 import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
-import { loginPending, loginSuccess, loginFail } from "./authenSclice";
+import { loginSuccess, loginFail } from "./authenSclice";
 import Cookies from "js-cookie";
 
 const login = async (
@@ -17,6 +17,8 @@ const login = async (
   if (response?.data?.data?.access_token) {
     Cookies.set("AccessToken", response.data.data.access_token);
     Cookies.set("RefreshToken", response.data.data.refresh_token);
+    localStorage.setItem("UserRole", response.data.data.role);
+    localStorage.setItem("username", response.data.data.username);
   }
   if (!error && response.status === 200) {
     dispatch(loginSuccess({ ...response.data.data }));
