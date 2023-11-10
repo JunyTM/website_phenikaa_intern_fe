@@ -18,7 +18,7 @@ const MainBox: React.FC<any> = (props: Props) => {
             <div className="w-[90%] h-16 mt-3 px-3 py-2 bg-purple-300 shadow-xl shadow-blue-100 flex flex-row rounded-xl justify-between">
               <div>
                 <p className="text-sm font-semibold">Số lượng công ty</p>
-                <p className="text-xl font-semibold">12</p>
+                <p className="text-xl font-semibold">68</p>
               </div>
               <img
                 className="w-16"
@@ -30,7 +30,7 @@ const MainBox: React.FC<any> = (props: Props) => {
             <div className="w-[90%] h-16 mt-4 px-3 py-2 bg-blue-200 shadow-xl flex flex-row rounded-xl justify-between">
               <div>
                 <p className="text-sm font-semibold">Số lượng ứng tuyển</p>
-                <p className="text-xl font-semibold">12</p>
+                <p className="text-xl font-semibold">326</p>
               </div>
               <img
                 className="w-14"

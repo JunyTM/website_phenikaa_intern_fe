@@ -4,6 +4,7 @@ import NavBar from "../../components/layout/navbar/NavBar";
 import NavBarIcon from "../../components/layout/navbar/NavBarIcon";
 import MainBox from "../../components/infoBox/MainBox";
 import SubBox from "../../components/infoBox/SubBox";
+import HomeBanner from "../../components/banner/HomeBanner";
 
 const Home: React.FC<any> = () => {
   return (
@@ -13,6 +14,7 @@ const Home: React.FC<any> = () => {
       <NavBarIcon />
       <MainBox />
       <SubBox />
+      <HomeBanner />
     </div>
   );
 };

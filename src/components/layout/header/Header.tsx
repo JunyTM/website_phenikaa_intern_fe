@@ -16,7 +16,7 @@ const Header: React.FC<any> = () => {
   };
 
   return (
-    <div className="w-full h-[6%] bg-slate-100 rounded-b-xl shadow-2xl shadow-gray-500 flex flex-row fixed">
+    <div className="w-full h-[6%] bg-slate-100 rounded-b-xl shadow-2xl shadow-gray-500 z-50 flex flex-row fixed">
       <div className="w-[70%] h-full flex flex-row">
         <img
           className="w-14 h-14 ml-48"
