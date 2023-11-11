@@ -2,7 +2,6 @@ import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
 import { Profile } from "../../model/Profile";
 import { ProfilePending, ProfileFail, ProfileSuccess } from "./profileSlice";
-import Cookies from "js-cookie";
 
 const getProfileInfo = async (userId: number, dispatch: any) => {
   const api = APIS_URL.ADVANCE.filter();

@@ -1,6 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { RootState } from "../../redux/Store";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { thunkFunctionProfile } from "../../redux/profileSlice/profile.action";
 
 const FetchRole: React.FC<{ children: React.FC }> = ({

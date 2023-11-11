@@ -1,0 +1,6 @@
+#internShip {
+  width: 100vw !important;
+  height: 200%;
+  background: url(src/assets/background/bg_home_page.avif) no-repeat;
+  background-size: cover;
+}

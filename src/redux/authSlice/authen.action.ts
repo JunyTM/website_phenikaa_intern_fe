@@ -18,6 +18,7 @@ const login = async (
     Cookies.set("AccessToken", response.data.data.access_token);
     Cookies.set("RefreshToken", response.data.data.refresh_token);
     localStorage.setItem("UserRole", response.data.data.role);
+    localStorage.setItem("UserId", response.data.data.id);
     localStorage.setItem("username", response.data.data.username);
   }
   if (!error && response.status === 200) {

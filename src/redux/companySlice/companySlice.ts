@@ -3,10 +3,16 @@ import { Company } from "../../model/company";
 
 export interface listCompanies {
   value: Company[];
+  isCreated: boolean;
+  keySearch: string;
+  companyId: number;
 }
 
 const initialState: listCompanies = {
   value: [],
+  isCreated: false,
+  keySearch: "",
+  companyId: 0,
 };
 
 export const companySlice = createSlice({
@@ -14,18 +20,28 @@ export const companySlice = createSlice({
   initialState,
   reducers: {
     insert: (state, action) => {
-      state.value.push(action.payload);
+      state.value = [...action.payload];
     },
     update: (state, action) => {
-      const index = state.value.findIndex(
-        (item) => item.id === action.payload.id
-      );
-      state.value[index] = action.payload;
+      state.value = [...state.value, action.payload];
+    },
+
+    setIsCreate: (state, action) => {
+      state.isCreated = action.payload;
+    },
+
+    updateKeySearch(state, action) {
+      state.keySearch = action.payload;
+    },
+
+    setCompany(state, action) {
+      state.companyId = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { insert, update } = companySlice.actions;
+export const { insert, update, updateKeySearch, setCompany, setIsCreate } =
+  companySlice.actions;
 
 export default companySlice.reducer;
