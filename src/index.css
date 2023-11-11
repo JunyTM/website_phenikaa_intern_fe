@@ -29,6 +29,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body {
   margin: 0;
   /* display: flex;

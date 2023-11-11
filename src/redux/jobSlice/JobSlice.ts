@@ -3,13 +3,13 @@ import { Job } from "../../model/job";
 
 export interface listJobs {
   value: Job[] | null;
-//   CompanyId: number;
+  detailJob: Job | null;
   isCreated: boolean;
 }
 
 const initialState: listJobs = {
   value: [],
-//   CompanyId: 0,
+  detailJob: null,
   isCreated: false,
 };
 
@@ -21,21 +21,17 @@ export const jobSlice = createSlice({
       state.isCreated = action.payload;
     },
 
-    // setJobCompany: (state, action) => {
-    //   state.CompanyId = action.payload;
-    // },
+    setJobDetail: (state, action) => {
+      state.detailJob = action.payload;
+    },
 
     setJobFetching: (state, action) => {
-      state = {
-        ...state,
-        value: action.payload,
-        isCreated: false,
-      };
+      state.value = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setJobPending, setJobFetching } = jobSlice.actions;
+export const { setJobPending, setJobDetail, setJobFetching } = jobSlice.actions;
 
 export default jobSlice.reducer;

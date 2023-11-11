@@ -1,6 +1,17 @@
 #internShip {
   width: 100vw !important;
   height: 200%;
-  background: url(src/assets/background/bg_home_page.avif) no-repeat;
+  background: url(src/assets/background/bg_home_page.png) no-repeat;
   background-size: cover;
+}
+
+#InternJobDetail {
+  width: 100vw !important;
+  height: 100vh;
+  background: url(src/assets/background/bg_home_page.png) no-repeat;
+  background-size: cover;
+}
+
+.hind-scroll::-webkit-scrollbar {
+  display: none;
 }

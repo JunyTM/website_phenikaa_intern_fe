@@ -9,6 +9,10 @@ const CompanyBox: React.FC<any> = () => {
   const company: Company = useSelector(
     (state: RootState) => state.company.value[0]
   );
+  if (company !== undefined) {
+    let temp: string = company?.id !== undefined ? company.id.toString() : "";
+    localStorage.setItem("CompanyId", temp);
+  }
   const user_id = localStorage.getItem("UserId");
 
   useLayoutEffect(() => {

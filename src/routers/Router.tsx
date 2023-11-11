@@ -7,8 +7,10 @@ import Login from "../views/login/Login";
 import Home from "../views/home/Home";
 import InternShip from "../views/intern/InternShip";
 import CompanyScreen from "../views/company/Company";
+import InternJobDetail from "../views/intern/InternJobDetail";
+import Page404 from "../views/error/Page404";
+// import Coding from "../views/error/Coding";
 
-import Coding from "../views/error/Coding";
 const Router: React.FC = () => {
   const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
@@ -30,7 +32,17 @@ const Router: React.FC = () => {
       element: <Role role={["company", "admin"]} children={CompanyScreen} />,
     },
 
-    { path: "/coding", element: <Coding /> },
+    { path: "/coding", element: <Page404 /> },
+
+    {
+      path: "/internship/:idJob",
+      element: (
+        <Role
+          role={["student", "company", "admin"]}
+          children={InternJobDetail}
+        />
+      ),
+    },
   ]);
 
   return <RouterProvider router={router} />;

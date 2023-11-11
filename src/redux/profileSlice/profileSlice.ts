@@ -1,4 +1,3 @@
-import { profile } from "console";
 import { createSlice } from "@reduxjs/toolkit";
 import { Profile } from "../../model/Profile";
 

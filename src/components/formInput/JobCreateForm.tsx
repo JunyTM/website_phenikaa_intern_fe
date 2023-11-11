@@ -19,7 +19,7 @@ const JobCreateForm: React.FC<any> = () => {
     company_id: 0,
     title: "",
     require: "",
-    job_description: "",
+    job_desc: "",
     form_of_work: "",
     benefit: "",
     quantity: 0,
@@ -39,6 +39,7 @@ const JobCreateForm: React.FC<any> = () => {
   const handleSumit = () => {
     job.company_id = companyId;
     thunkFunctionJob.InsertJob(job, dispatch);
+    window.location.reload();
   };
 
   return (
@@ -93,11 +94,12 @@ const JobCreateForm: React.FC<any> = () => {
         label="Mô tả công việc"
         required
         autosize
-        minRows={3}
+        minRows={2}
+        maxRows={3}
         onChange={(e) => {
           setJob({
             ...job,
-            job_description: e.target.value,
+            job_desc: e.target.value,
           });
         }}
       />
@@ -107,7 +109,8 @@ const JobCreateForm: React.FC<any> = () => {
         label="Yêu cầu kiến thức"
         required
         autosize
-        minRows={3}
+        minRows={2}
+        maxRows={3}
         onChange={(e) => {
           setJob({
             ...job,
@@ -143,8 +146,36 @@ const JobCreateForm: React.FC<any> = () => {
           mt="md"
         />
       </div>
+      <TextInput
+        className="w-[50%] ml-6"
+        label="Dia chi làm việc"
+        placeholder="vd: Tuyên dung nhân viên ..."
+        required
+        onChange={(e) => {
+          setJob({
+            ...job,
+            adress: e.target.value,
+          });
+        }}
+        mt="md"
+      />
+      <Textarea
+        className="w-[70%] ml-6 mt-5"
+        placeholder="vd: Yêu cầu có các kĩ năng ..."
+        label="Quyền lợi được hưởng"
+        required
+        autosize
+        minRows={2}
+        maxRows={3}
+        onChange={(e) => {
+          setJob({
+            ...job,
+            benefit: e.target.value,
+          });
+        }}
+      />
       <Button
-        className="w-36 absolute bottom-10 left-[35%] font-bold border-2"
+        className="w-36 absolute bottom-10 left-[39%] font-bold border-2"
         loading={isCreated}
         variant="outline"
         color="orange"

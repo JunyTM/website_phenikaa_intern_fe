@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header: React.FC<any> = () => {
   const username = localStorage.getItem("username");
@@ -18,11 +18,13 @@ const Header: React.FC<any> = () => {
   return (
     <div className="w-full h-[6%] bg-slate-100 rounded-b-xl shadow-2xl shadow-gray-500 z-50 flex flex-row fixed">
       <div className="w-[70%] h-full flex flex-row">
-        <img
-          className="w-14 h-14 ml-48"
-          src="https://truongtop1.com/wp-content/uploads/2023/03/Logo-DH-Phenikaa.png"
-          alt="phenikaa"
-        />
+        <Link to="/">
+          <img
+            className="w-14 h-14 ml-48"
+            src="https://truongtop1.com/wp-content/uploads/2023/03/Logo-DH-Phenikaa.png"
+            alt="phenikaa"
+          />
+        </Link>
 
         <div className="w-1/2 h-full ml-10 pt-2">
           <Marquee className="h-full" gradient={false} speed={20}>
