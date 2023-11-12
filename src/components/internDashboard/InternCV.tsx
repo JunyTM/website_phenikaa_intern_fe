@@ -41,6 +41,7 @@ const InternCV: React.FC<any> = (props: any) => {
       intern_job_id: jobId,
       accepted: false,
       profile_path: linkCV,
+      state: "pending",
     };
     thunkFunctionRecruitment.Create(recruitment, dispath);
     navigate("/internship");

@@ -5,6 +5,8 @@ import companyReducer from "./companySlice/companySlice";
 import profileSlice from "./profileSlice/profileSlice";
 import JobSlice from "./jobSlice/JobSlice";
 import recuritmentSlice from "./recuritment/recuritmentSlice";
+import evaluateSlice from "./evaluate/evaluateSlice";
+import interShipSlice from "./internShip/interShipSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ export const store = configureStore({
     company: companyReducer,
     job: JobSlice,
     recuritment: recuritmentSlice,
+    evaluate: evaluateSlice,
+    interShip: interShipSlice,
   },
 });
 

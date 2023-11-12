@@ -1,11 +1,12 @@
 import React, { useState, useLayoutEffect } from "react";
-import { TextInput, rem, Divider } from "@mantine/core";
+import { TextInput, rem } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import DropDown from "../../components/common/DropDown";
 import { RootState } from "../../redux/Store";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkFunctionRecruitment } from "../../redux/recuritment/recuritment.action";
 import { Recruitment } from "../../model/recruitment";
+import { SetJobReport } from "../../redux/recuritment/recuritmentSlice";
 
 const ListReportApply: React.FC<any> = () => {
   const [search, setSearch] = useState<string>("");
@@ -21,14 +22,29 @@ const ListReportApply: React.FC<any> = () => {
     thunkFunctionRecruitment.GetAll(dispatch);
   }, []);
 
-  const handleDenied = (state: any) => {};
+  const handleDenied = (idItem: number) => {
+    thunkFunctionRecruitment.Delete(idItem, dispatch);
+    window.location.reload();
+  };
 
-  const handleAccept = (state: any) => {};
+  const handleAccept = (item: Recruitment) => {
+    let recuritment = {
+      id: item.id,
+      profile_id: item.profile_id,
+      intern_job_id: item.intern_job_id,
+      accepted: true,
+    };
+    thunkFunctionRecruitment.Update(recuritment, dispatch);
+    window.location.reload();
+  };
 
-  const handleReport = (state: any) => {};
+  const handleReport = (item: Recruitment) => {
+    // thunkFunctionRecruitment.Update(item, dispatch);
+    dispatch(SetJobReport(item));
+  };
 
   return (
-    <div className="w-[38%] h-[40rem] top-[37rem] right-[5%] bg-slate-50 shadow-2xl rounded-xl absolute">
+    <div className="w-[38%] h-[45rem] top-[37rem] right-[5%] bg-slate-50 shadow-2xl rounded-xl absolute">
       <div className="w-full h-full p-7 shadow-inner rounded-xl">
         <div className="border-l-8 mb-7">
           <h1 className="font-extrabold text-2xl ml-3 opacity-80 ">
@@ -67,7 +83,8 @@ const ListReportApply: React.FC<any> = () => {
               {listRecruitment?.map((apply: Recruitment, index: number) => {
                 if (
                   apply?.intern_job?.title.includes(search) &&
-                  apply?.intern_job?.company_id === Number(CompanyId)
+                  apply?.intern_job?.company_id === Number(CompanyId) &&
+                  apply?.state === "pending"
                 ) {
                   let idChose = apply?.id !== undefined ? apply.id : 0;
                   return (
@@ -121,7 +138,7 @@ const ListReportApply: React.FC<any> = () => {
                           {apply?.accepted === true ? (
                             <button
                               className=" text-left font-medium opacity-75 text-violet-600 hover:underline"
-                              onClick={() => handleReport(idChose)}
+                              onClick={() => handleReport(apply)}
                             >
                               report
                             </button>
@@ -129,7 +146,7 @@ const ListReportApply: React.FC<any> = () => {
                             <button
                               className="text-left font-medium opacity-75 hover:text-yellow-500 hover:underline"
                               onClick={() => {
-                                handleAccept(idChose);
+                                handleAccept(apply);
                               }}
                             >
                               accept

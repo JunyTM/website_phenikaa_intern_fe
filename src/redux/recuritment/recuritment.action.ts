@@ -40,6 +40,7 @@ const Create = async (data: any, dispatch: any) => {
 };
 
 const Update = async (data: any, dispatch: any) => {
+  console.log("data recruitment", data);
   const api = APIS_URL.BASIC.upsert();
   const { response, error }: any = await useCallApi({
     ...api,
@@ -55,8 +56,25 @@ const Update = async (data: any, dispatch: any) => {
   }
 };
 
+const Delete = async (id: number, dispatch: any) => {
+  const api = APIS_URL.BASIC.delete();
+  const { response, error }: any = await useCallApi({
+    ...api,
+    payload: {
+      id: [id],
+      modelType: "recruitments",
+    },
+  });
+  if (!error && response.status === 200) {
+    console.log("recruitment success");
+  } else {
+    console.log("recruitment fail");
+  }
+};
+
 export const thunkFunctionRecruitment = {
   GetAll,
   Create,
   Update,
+  Delete,
 };
