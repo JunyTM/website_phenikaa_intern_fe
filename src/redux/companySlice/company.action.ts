@@ -29,6 +29,7 @@ const GetByCompanyID = async (id: any, dispatch: any) => {
       ignoreAssociation: false,
     },
   });
+  localStorage.setItem("CompanyId", response.data.data[0].id);
   dispatch(setCompany(response.data.data[0].id));
   if (!error && response.status === 200) {
     dispatch(insert(response.data.data));

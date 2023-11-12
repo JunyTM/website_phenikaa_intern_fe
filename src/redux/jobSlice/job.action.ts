@@ -91,10 +91,29 @@ const GetJobDetail = async (id: any, dispatch: any) => {
   }
 };
 
+const ApplyJob = async (id: any, dispatch: any) => {
+  // dispatch(setJobPending(true));
+  const api = APIS_URL.BASIC.upsert();
+  const { response, error }: any = await useCallApi({
+    ...api,
+    payload: {
+      querySearch: `id = ${id}`,
+      modelType: "internJobs",
+      ignoreAssociation: false,
+    },
+  });
+  if (!error && response.status === 200) {
+    dispatch(setJobDetail(response.data.data[0]));
+  } else {
+    console.log("Job fail");
+  }
+}
+
 export const thunkFunctionJob = {
   GetAllJob,
   InsertJob,
   GetJobByCompany,
   GetJobDetail,
   RemoveJob,
+  ApplyJob,
 };

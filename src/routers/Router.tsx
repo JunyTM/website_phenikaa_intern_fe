@@ -5,9 +5,11 @@ import Auth from "../views/auth/Auth";
 import Role from "../views/role/Role";
 import Login from "../views/login/Login";
 import Home from "../views/home/Home";
+import Profile from "../views/profile/Profile";
 import InternShip from "../views/intern/InternShip";
 import CompanyScreen from "../views/company/Company";
 import InternJobDetail from "../views/intern/InternJobDetail";
+import ReportDashboard from "../views/report/ReportDashboard";
 import Page404 from "../views/error/Page404";
 // import Coding from "../views/error/Coding";
 
@@ -43,6 +45,18 @@ const Router: React.FC = () => {
         />
       ),
     },
+
+    {
+      path: "/profile",
+      element: <Role role={["student"]} children={Profile} />,
+    },
+
+    {
+      path: "/interview",
+      element: <Role role={["admin", "company"]} children={ReportDashboard} />,
+    },
+
+    { path: "*", element: <Page404 /> },
   ]);
 
   return <RouterProvider router={router} />;

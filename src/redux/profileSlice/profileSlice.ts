@@ -3,13 +3,11 @@ import { Profile } from "../../model/Profile";
 
 export interface ListProfile {
   list: Profile[];
-  role: string;
   isFetching: boolean;
 }
 
 const initialState: ListProfile = {
   list: [],
-  role: "",
   isFetching: false,
 };
 
@@ -25,16 +23,14 @@ export const profileSlice = createSlice({
     ProfileFail: (state) => {
       state = {
         list: [],
-        role: "",
         isFetching: false,
       };
       return state;
     },
 
-    ProfileSuccess: (state, action) => {
+    ProfileSuccess: (state, payload) => {
       state = {
-        list: action.payload.profile,
-        role: action.payload.role,
+        list: [...payload.payload],
         isFetching: false,
       };
       return state;

@@ -1,5 +1,5 @@
 import { BaseModel } from "./base";
-import { User } from "./user";
+// import { User } from "./user";
 
 export interface Profile extends BaseModel {
   name: string;
@@ -7,5 +7,6 @@ export interface Profile extends BaseModel {
   email: string;
   phone: string;
   user_id: number;
-  user: User;
+  birthday: string;
+  // user: User;
 }

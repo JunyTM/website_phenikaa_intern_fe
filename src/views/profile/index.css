@@ -1,0 +1,6 @@
+#profile {
+  width: 100vw !important;
+  height: 110%;
+  background: url(src/assets/background/bg_home_page.png) no-repeat;
+  background-size: cover;
+}

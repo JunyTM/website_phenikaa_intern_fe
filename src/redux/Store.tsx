@@ -4,6 +4,7 @@ import authSlice from "./authSlice/authenSclice";
 import companyReducer from "./companySlice/companySlice";
 import profileSlice from "./profileSlice/profileSlice";
 import JobSlice from "./jobSlice/JobSlice";
+import recuritmentSlice from "./recuritment/recuritmentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     profile: profileSlice,
     company: companyReducer,
     job: JobSlice,
+    recuritment: recuritmentSlice,
   },
 });
 

@@ -13,18 +13,21 @@ const NavBar: React.FC<Props> = () => {
   };
 
   return (
-    <div className="w-[18rem] h-[25rem] top-28 left-36 shadow-2xl rounded-lg absolute bg-slate-50">
+    <div className="w-[18rem] h-[20rem] top-28 left-36 shadow-2xl rounded-lg absolute bg-slate-50">
       <div className="w-full h-full rounded-lg shadow-inner">
-        <ul className="w-[80%] m-auto pt-9">
+        <ul className="w-[80%] m-auto  pt-10">
           <li className="h-12 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
-            <Link className="text-slate-900 hover:text-orange-500" to="/home">
+            <Link
+              className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
+              to="/home"
+            >
               Trang chủ
             </Link>
           </li>
           {checkRoleAdmin(role) ? (
             <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
               <Link
-                className="text-slate-900 hover:text-orange-500"
+                className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
                 to="/company"
               >
                 Quản lý tuyển dụng
@@ -33,22 +36,27 @@ const NavBar: React.FC<Props> = () => {
           ) : null}
           <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
             <Link
-              className="text-slate-900 hover:text-orange-500"
+              className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
               to="/internship"
             >
               Thực tập doanh nghiệp
             </Link>
           </li>
-          <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
-            <Link className="text-slate-900 hover:text-orange-500" to="/coding">
-              Thông tin cá nhân
-            </Link>
-          </li>
+          {role == "student" ? (
+            <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
+              <Link
+                className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
+                to="/profile"
+              >
+                Thông tin cá nhân
+              </Link>
+            </li>
+          ) : null}
           {checkRoleAdmin(role) ? (
             <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
               <Link
-                className="text-slate-900 hover:text-orange-500"
-                to="/coding"
+                className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
+                to="/interview"
               >
                 Báo cáo thống kê
               </Link>
