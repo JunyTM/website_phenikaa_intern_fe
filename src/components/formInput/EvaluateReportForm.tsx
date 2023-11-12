@@ -25,7 +25,7 @@ const EvaluateReportForm: React.FC<any> = () => {
     intern_job_id: apply.intern_job_id,
     accepted: apply.accepted,
     profile_path: apply.profile_path,
-    state: "done",
+    state: "Hoàn thành",
   };
 
   const handleSubmit = () => {

@@ -34,6 +34,16 @@ const NavBar: React.FC<Props> = () => {
               </Link>
             </li>
           ) : null}
+          {role == "company" ? (
+            <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
+              <Link
+                className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
+                to="/interview"
+              >
+                Dánh giá sinh viên
+              </Link>
+            </li>
+          ) : null}
           <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
             <Link
               className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
@@ -49,16 +59,6 @@ const NavBar: React.FC<Props> = () => {
                 to="/profile"
               >
                 Thông tin cá nhân
-              </Link>
-            </li>
-          ) : null}
-          {checkRoleAdmin(role) ? (
-            <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
-              <Link
-                className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
-                to="/interview"
-              >
-                Báo cáo thống kê
               </Link>
             </li>
           ) : null}

@@ -53,7 +53,7 @@ const Router: React.FC = () => {
 
     {
       path: "/interview",
-      element: <Role role={["admin", "company"]} children={ReportDashboard} />,
+      element: <Role role={["company"]} children={ReportDashboard} />,
     },
 
     { path: "*", element: <Page404 /> },

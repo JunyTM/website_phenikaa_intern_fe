@@ -1,11 +1,8 @@
-import { ListRecruitment } from "./../recuritment/recuritmentSlice";
 import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
 import { FetchingEvaluation, SetEvaluationReport } from "./evaluateSlice";
 import { EvaluationReport } from "../../model/evaluate";
-// import { useSelector } from "react-redux";
-// import { RootState } from "../Store";
-// import { FetchingInternShip } from "../internShip/interShipSlice";
+
 
 const GetAll = async (dispatch: any) => {
   const api = APIS_URL.ADVANCE.filter();
@@ -65,27 +62,6 @@ const Create = async (evaluate: EvaluationReport, dispatch: any) => {
   } else {
     console.log("Evaluates fail");
   }
-
-  //   console.log("data ========>" + response2);
-  //   // Cập nhật danh sách phê duyệt đơn ứng tuyển của công ty
-  //   const recruitmentId = useSelector(
-  //     (state: RootState) => state.recuritment.recruitmentDetail
-  //   );
-  //   const { response3, error3 }: any = await useCallApi({
-  //     ...api,
-  //     payload: {
-  //       modelType: "recruitments",
-  //       data: {
-  //         ...recruitmentId,
-  //         state: "finish",
-  //       },
-  //     },
-  //   });
-  //   if (!error3 && response3.status === 200) {
-  //     console.log("recruitments update success");
-  //   } else {
-  //     console.log("recruitments update fail");
-  //   }
 };
 
 export const thunkFunctionEvaluation = {

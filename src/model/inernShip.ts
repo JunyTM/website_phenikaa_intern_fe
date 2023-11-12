@@ -10,6 +10,6 @@ export interface InternShip extends BaseModel {
   code: string;
 
   profile?: Profile | null;
-  Company?: Company | null;
+  company?: Company | null;
   internship_evaluate?: EvaluationReport | null;
 }

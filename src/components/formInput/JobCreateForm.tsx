@@ -135,7 +135,7 @@ const JobCreateForm: React.FC<any> = () => {
           className="w-[30%] ml-6"
           label="Hình thức làm việc"
           placeholder="vd: Part-time"
-          data={["Intern", "Part-Time", "Full-Time"]}
+          data={["Thực tập sinh", "Bán thời gian", "Toàn thời gian"]}
           required
           onChange={(e: string) => {
             setJob({

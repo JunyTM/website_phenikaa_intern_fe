@@ -25,7 +25,7 @@ const CompanyAdminBox: React.FC<any> = () => {
   };
 
   const handleUpdateSlice = () => {
-    console.log("keySearch", keySearch);
+    // console.log("keySearch", keySearch);
     dispatch(updateKeySearch(keySearch));
   };
 

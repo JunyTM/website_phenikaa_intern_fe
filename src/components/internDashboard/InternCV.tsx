@@ -19,16 +19,12 @@ const InternCV: React.FC<any> = (props: any) => {
   const jobDetail = useSelector((state: RootState) => state.job.detailJob);
   const profile = useSelector((state: RootState) => state.profile.list[0]);
   const navigate = useNavigate();
-  //   const companyDetail = useSelector(
-  //     (state: RootState) => state.company.value[0]
-  //   );
   const [linkCV, setLinkCV] = useState("");
 
   const jobId = props.jobId;
   useLayoutEffect(() => {
     thunkFunctionJob.GetJobDetail(jobId, dispath);
     thunkFunctionProfile.getProfileInfo(dispath);
-    // thunkFunctionCompany.GetByCompanyID(jobDetail?.company_id, dispath);
   }, []);
 
   const handleSubmitCV = () => {
@@ -41,7 +37,7 @@ const InternCV: React.FC<any> = (props: any) => {
       intern_job_id: jobId,
       accepted: false,
       profile_path: linkCV,
-      state: "pending",
+      state: "Chờ phỏng vấn",
     };
     thunkFunctionRecruitment.Create(recruitment, dispath);
     navigate("/internship");

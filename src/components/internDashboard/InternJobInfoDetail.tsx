@@ -2,20 +2,14 @@ import React, { useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/Store";
 import { thunkFunctionJob } from "../../redux/jobSlice/job.action";
-// import { thunkFunctionCompany } from "../../redux/companySlice/company.action";
-// import { Company } from "../../model/company";
 
 const InternJobInfoDetail: React.FC<any> = (props: any) => {
   const dispath = useDispatch();
   const jobDetail = useSelector((state: RootState) => state.job.detailJob);
-//   const companyDetail = useSelector(
-//     (state: RootState) => state.company.value[0]
-//   );
 
   const jobId = props.jobId;
   useLayoutEffect(() => {
     thunkFunctionJob.GetJobDetail(jobId, dispath);
-    // thunkFunctionCompany.GetByCompanyID(jobDetail?.company_id, dispath);
   }, []);
   return (
     <div className="w-[60%] h-[80%] top-[8rem] left-[5rem] bg-slate-50 shadow-2xl absolute rounded-xl">

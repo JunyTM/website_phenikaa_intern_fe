@@ -33,6 +33,7 @@ const ListReportApply: React.FC<any> = () => {
       profile_id: item.profile_id,
       intern_job_id: item.intern_job_id,
       accepted: true,
+      state: "Đang thực tập",
     };
     thunkFunctionRecruitment.Update(recuritment, dispatch);
     window.location.reload();
@@ -84,7 +85,7 @@ const ListReportApply: React.FC<any> = () => {
                 if (
                   apply?.intern_job?.title.includes(search) &&
                   apply?.intern_job?.company_id === Number(CompanyId) &&
-                  apply?.state === "pending"
+                  apply?.state === "Chờ phỏng vấn"
                 ) {
                   let idChose = apply?.id !== undefined ? apply.id : 0;
                   return (
