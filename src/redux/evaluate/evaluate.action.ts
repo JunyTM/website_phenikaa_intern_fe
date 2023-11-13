@@ -3,7 +3,6 @@ import { useCallApi } from "../../utils/apiCall";
 import { FetchingEvaluation, SetEvaluationReport } from "./evaluateSlice";
 import { EvaluationReport } from "../../model/evaluate";
 
-
 const GetAll = async (dispatch: any) => {
   const api = APIS_URL.ADVANCE.filter();
   const { response, error }: any = await useCallApi({
@@ -24,8 +23,11 @@ const GetAll = async (dispatch: any) => {
   }
 };
 
-const Create = async (evaluate: EvaluationReport, dispatch: any) => {
-  const userId = localStorage.getItem("UserId");
+const Create = async (
+  profileId: number,
+  evaluate: EvaluationReport,
+  dispatch: any
+) => {
   const CompanyId = localStorage.getItem("CompanyId");
 
   // Tạo đánh giá mới
@@ -47,7 +49,7 @@ const Create = async (evaluate: EvaluationReport, dispatch: any) => {
       payload: {
         modelType: "internShips",
         data: {
-          profile_id: userId,
+          profile_id: profileId,
           company_id: CompanyId,
           internship_evaluate_id: data.id,
         },

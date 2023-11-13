@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
-import { FileInput, rem, TextInput } from "@mantine/core";
+import { rem, TextInput } from "@mantine/core";
 import { IconFileCv } from "@tabler/icons-react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/Store";
@@ -40,7 +40,7 @@ const InternCV: React.FC<any> = (props: any) => {
       state: "Chờ phỏng vấn",
     };
     thunkFunctionRecruitment.Create(recruitment, dispath);
-    navigate("/internship");
+    navigate("/profile");
   };
 
   return (

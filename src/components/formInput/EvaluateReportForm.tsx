@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState} from "react";
 import { TextInput, Textarea, Divider, Rating, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { Recruitment } from "../../model/recruitment";
@@ -35,7 +35,7 @@ const EvaluateReportForm: React.FC<any> = () => {
     if (reportInfo.evaluation == null || reportInfo.evaluation === 0) {
       reportInfo.evaluation = 2;
     }
-    thunkFunctionEvaluation.Create(reportInfo, dispatch);
+    thunkFunctionEvaluation.Create(apply.profile_id, reportInfo, dispatch);
     window.location.reload();
   };
 
