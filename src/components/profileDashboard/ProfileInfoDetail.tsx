@@ -23,7 +23,7 @@ const ProfileInfoDetail: React.FC<any> = () => {
     email: "",
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     thunkFunctionProfile.getProfileInfo(dispatch);
     setNewProfile({
       id: profile?.id,

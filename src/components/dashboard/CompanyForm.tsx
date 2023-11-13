@@ -79,7 +79,8 @@ const CompanyForm: React.FC<any> = () => {
         placeholder="Autosize with no rows limit"
         label="Mô tả công ty"
         autosize
-        minRows={2}
+        minRows={3}
+        maxRows={3}
         onChange={(e) => {
           setCompany({
             ...company,

@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthenticationForm } from "../../components/inputLogin";
-
+import { ToastContainer } from "react-toastify";
 const Login: React.FC<any> = () => {
   return (
     <div className="w-[100vw] h-[100vh] pt-[3%]">
@@ -25,6 +25,7 @@ const Login: React.FC<any> = () => {
           />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

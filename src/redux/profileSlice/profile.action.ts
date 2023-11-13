@@ -6,7 +6,7 @@ import { ProfilePending, ProfileFail, ProfileSuccess } from "./profileSlice";
 const getProfileInfo = async (dispatch: any) => {
   const api = APIS_URL.ADVANCE.filter();
   // console.log("userId", userId);
-  const userId: any = localStorage.getItem("UserId") 
+  const userId: any = localStorage.getItem("UserId");
   console.log("userId", userId);
   dispatch(ProfilePending());
   const { response, error }: any = await useCallApi({
@@ -20,11 +20,10 @@ const getProfileInfo = async (dispatch: any) => {
 
   // console.log("response", response);
   const data = response.data.data as Profile[];
-  // const role = data[0]?.user?.user_roles?.role?.code;
-  // localStorage.setItem("userRole", role);
- 
+  const profileId = data[0].id ? data[0].id : 0;
   if (!error && response.status === 200) {
     dispatch(ProfileSuccess(data));
+    localStorage.setItem("ProfileId", profileId.toString());
     console.log("Profile success");
   } else {
     dispatch(ProfileFail());
@@ -34,11 +33,13 @@ const getProfileInfo = async (dispatch: any) => {
 
 const updateProfile = async (data: Profile, dispatch: any) => {
   const api = APIS_URL.BASIC.upsert();
+  const profileIdStr = Number(localStorage.getItem("ProfileId"));
+  const profileId = profileIdStr ? profileIdStr : 0;
   const { response, error }: any = await useCallApi({
     ...api,
     payload: {
       modelType: "profiles",
-      data: data,
+      data: { ...data, id: profileId },
     },
   });
   if (!error && response.status === 200) {
@@ -46,9 +47,9 @@ const updateProfile = async (data: Profile, dispatch: any) => {
   } else {
     console.log("Profile update fail");
   }
-}
+};
 
 export const thunkFunctionProfile = {
   getProfileInfo,
-  updateProfile
+  updateProfile,
 };

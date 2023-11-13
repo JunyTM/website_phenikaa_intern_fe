@@ -1,16 +1,27 @@
-import { notifications } from "@mantine/notifications";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const show = (message: string, type: string) => {
-  notifications.show({
-    title: "Message",
-    message: message,
-    color: type === "success" ? "green" : type === "error" ? "red" : "yellow",
-    autoClose: 4000,
-  });
-};
-
-export const toast = {
-  success: (message: string) => show(message, "success"),
-  error: (message: string) => show(message, "error"),
-  warning: (message: string) => show(message, "warning"),
+export const notify = (type: string, data: string) => {
+  switch (type) {
+    case "success":
+      toast.success(data, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      break;
+    case "error":
+      toast.error(data, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      break;
+    case "warning":
+      toast.warning(data, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      break;
+    case "info":
+      toast.info(data, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      break;
+  }
 };

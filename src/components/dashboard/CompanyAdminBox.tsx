@@ -30,7 +30,7 @@ const CompanyAdminBox: React.FC<any> = () => {
   };
 
   return (
-    <div className="w-[65%] h-[24.5rem] top-[7.3rem] left-[31rem] bg-slate-50 shadow-2xl rounded-xl absolute">
+    <div className="w-[65%] h-[27rem] top-[7.3rem] left-[31rem] bg-slate-50 shadow-2xl rounded-xl absolute">
       <div className="w-full h-full p-7 shadow-inner rounded-xl">
         <div className="w-full h-12 flex flex-row items-center justify-between">
           <h1 className="text-3xl font-semibold underline underline-offset-4 opacity-90">

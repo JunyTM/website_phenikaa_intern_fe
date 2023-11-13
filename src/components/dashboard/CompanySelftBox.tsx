@@ -37,7 +37,7 @@ const CompanyBox: React.FC<any> = () => {
               {company?.phone}
             </p>
 
-            <p className="text-base font-bold mt-5">
+            <p className="text-base h-[9rem] text-ellipsis overflow-hidden font-bold mt-5">
               Giới thiệu công ty:{" "}
               <span className="text-base font-normal">
                 {company?.description}

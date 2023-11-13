@@ -74,9 +74,9 @@ const ListReportApply: React.FC<any> = () => {
           <table className="table-fixed">
             <thead className="h-8 bg-slate-200 rounded-t-xl text-sm">
               <tr>
-                <th className="w-[25rem]">Ứng viên</th>
-                <th className="w-[15rem]">Mã sv</th>
-                <th className="w-[10rem]">Email</th>
+                <th className="w-[17rem]">Ứng viên</th>
+                <th className="w-[10rem]">Mã sv</th>
+                <th className="w-[15rem]">Email</th>
                 <th className="w-[12rem]">Trang thái</th>
               </tr>
             </thead>
@@ -85,7 +85,7 @@ const ListReportApply: React.FC<any> = () => {
                 if (
                   apply?.intern_job?.title.includes(search) &&
                   apply?.intern_job?.company_id === Number(CompanyId) &&
-                  apply?.state === "Chờ phỏng vấn"
+                  apply?.state === "Chờ phỏng vấn" || apply?.state === "Đang thực tập"
                 ) {
                   let idChose = apply?.id !== undefined ? apply.id : 0;
                   return (
@@ -126,11 +126,11 @@ const ListReportApply: React.FC<any> = () => {
                       <td>
                         {apply?.accepted === true ? (
                           <p className="w-full ml-4 text-center text-green-600">
-                            {apply?.profile?.email}
+                            {apply?.intern_job?.title}
                           </p>
                         ) : (
                           <p className="w-full ml-4 text-center">
-                            {apply?.profile?.email}
+                            {apply?.intern_job?.title}
                           </p>
                         )}
                       </td>
