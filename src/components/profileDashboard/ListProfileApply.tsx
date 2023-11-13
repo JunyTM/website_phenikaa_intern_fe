@@ -8,8 +8,11 @@ import { Recruitment } from "../../model/recruitment";
 const ProfileApply: React.FC<any> = () => {
   const dispatch = useDispatch();
   const recuerment = useSelector((state: RootState) => state.recuritment.list);
-  const [profileId, setProfileId] = useState<number>(localStorage.getItem("ProfileId") ? Number(localStorage.getItem("ProfileId")) : 0);
-
+  const [profileId, setProfileId] = useState<number>(
+    localStorage.getItem("ProfileId")
+      ? Number(localStorage.getItem("ProfileId"))
+      : 0
+  );
 
   useEffect(() => {
     thunkFunctionRecruitment.GetAll(dispatch);
@@ -44,58 +47,56 @@ const ProfileApply: React.FC<any> = () => {
                   if (item?.profile_id === profileId) {
                     return (
                       <a href={item?.profile_path} target="_blank">
-
-                        {item?.state === "Hoàn thành" ? 
+                        {item?.state === "Hoàn thành" ? (
                           <tr
-                          key={index}
-                          className="h-12 hover:text-orange-500 font-medium text-slate-800 opacity-50"
-                        >
-                          <td className="text-ellipsis overflow-hidden w-[35rem] pr-3">
-                            {item?.intern_job?.title}
-                          </td>
-                          {/* <td className="text-center text-ellipsis overflow-hidden w-[27rem] ">
+                            key={index}
+                            className="h-12 hover:text-orange-500 font-medium text-slate-800 opacity-50"
+                          >
+                            <td className="text-ellipsis overflow-hidden w-[35rem] pr-3">
+                              {item?.intern_job?.title}
+                            </td>
+                            {/* <td className="text-center text-ellipsis overflow-hidden w-[27rem] ">
                           {item?.intern_job?.Company?.name}
                         </td> */}
-                          <td className="text-center text-ellipsis overflow-hidden w-[32rem]">
-                            {item?.intern_job?.adress}
-                          </td>
-                          <td className="text-left text-ellipsis overflow-hidden w-[15rem] pl-20">
-                            {item?.profile?.email}
-                          </td>
-                          <td className="text-center text-ellipsis overflow-hidden w-[17rem] ">
-                            {item?.intern_job?.form_of_work}
-                          </td>
-                          <td className="text-center text-ellipsis overflow-hidden w-[12rem]">
-                            {item?.state}
-                          </td>
-                        </tr> : <tr></tr>    
-                        }
-
-                        <tr
-                          key={index}
-                          className="h-12 hover:text-orange-500 font-medium text-slate-800 "
-                        >
-                          <td className="text-ellipsis overflow-hidden w-[35rem] pr-3">
-                            {item?.intern_job?.title}
-                          </td>
-                          {/* <td className="text-center text-ellipsis overflow-hidden w-[27rem] ">
+                            <td className="text-center text-ellipsis overflow-hidden w-[32rem]">
+                              {item?.intern_job?.adress}
+                            </td>
+                            <td className="text-left text-ellipsis overflow-hidden w-[15rem] pl-20">
+                              {item?.profile?.email}
+                            </td>
+                            <td className="text-center text-ellipsis overflow-hidden w-[17rem] ">
+                              {item?.intern_job?.form_of_work}
+                            </td>
+                            <td className="text-center text-ellipsis overflow-hidden w-[12rem]">
+                              {item?.state}
+                            </td>
+                          </tr>
+                        ) : (
+                          <tr
+                            key={index}
+                            className="h-12 hover:text-orange-500 hover:opacity-90  font-medium text-slate-800 "
+                          >
+                            <td className="text-ellipsis overflow-hidden w-[35rem] pr-3">
+                              {item?.intern_job?.title}
+                            </td>
+                            {/* <td className="text-center text-ellipsis overflow-hidden w-[27rem] ">
                           {item?.intern_job?.Company?.name}
                         </td> */}
-                          <td className="text-center text-ellipsis overflow-hidden w-[32rem]">
-                            {item?.intern_job?.adress}
-                          </td>
-                          <td className="text-left text-ellipsis overflow-hidden w-[15rem] pl-20">
-                            {item?.profile?.email}
-                          </td>
-                          <td className="text-center text-ellipsis overflow-hidden w-[17rem] ">
-                            {item?.intern_job?.form_of_work}
-                          </td>
-                          <td className="text-center text-ellipsis overflow-hidden w-[12rem]">
-                            {item?.state}
-                          </td>
-                        </tr>
+                            <td className="text-center text-ellipsis overflow-hidden w-[32rem]">
+                              {item?.intern_job?.adress}
+                            </td>
+                            <td className="text-left text-ellipsis overflow-hidden w-[15rem] pl-20">
+                              {item?.profile?.email}
+                            </td>
+                            <td className="text-center text-ellipsis overflow-hidden w-[17rem] ">
+                              {item?.intern_job?.form_of_work}
+                            </td>
 
-
+                            <td className="text-center text-ellipsis overflow-hidden w-[12rem]">
+                              {item?.state}
+                            </td>
+                          </tr>
+                        )}
                       </a>
                     );
                   }

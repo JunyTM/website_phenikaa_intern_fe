@@ -120,12 +120,12 @@ const EvaluateAdminBox: React.FC<any> = () => {
                           <td className="w-[17rem] pl-9">
                             {item?.profile?.email}
                           </td>
-                          <td className="w-[25rem] pl-3">
+                          <td className="w-[25rem] pl-14">
                             {item?.company?.name}
                           </td>
                           <td>
                             <Rating
-                              className="w-[15rem] m-auto"
+                              className="w-[15rem] m-auto pl-14"
                               value={item?.internship_evaluate?.evaluation}
                             />
                           </td>

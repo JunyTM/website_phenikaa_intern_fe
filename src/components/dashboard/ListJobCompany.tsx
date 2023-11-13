@@ -20,7 +20,7 @@ const ListJobCompany: React.FC<any> = () => {
   }, []);
 
   return (
-    <div className="w-[95%] h-[88%] m-auto p-4 border-2 rounded-lg  overflow-y-auto">
+    <div className="w-[95%] h-[88%] m-auto p-4 border-2 rounded-lg  overflow-y-auto hind-scroll">
       {listJob?.map((job: Job, index: number) => {
         return (
           <div

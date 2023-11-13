@@ -40,7 +40,7 @@ const InternCV: React.FC<any> = (props: any) => {
       state: "Chờ phỏng vấn",
     };
     thunkFunctionRecruitment.Create(recruitment, dispath);
-    navigate("/profile");
+    navigate("/home");
   };
 
   return (
