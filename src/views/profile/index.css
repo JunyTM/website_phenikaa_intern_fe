@@ -4,3 +4,7 @@
   background: url(src/assets/background/bg_home_page.png) no-repeat;
   background-size: cover;
 }
+
+.hind-scroll::-webkit-scrollbar {
+  display: none;
+}

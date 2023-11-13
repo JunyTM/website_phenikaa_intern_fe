@@ -12,6 +12,10 @@ const Header: React.FC<any> = () => {
     Cookies.remove("AccessToken");
     Cookies.remove("RefreshToken");
     localStorage.removeItem("UserRole");
+    localStorage.removeItem("CompanyId");
+    localStorage.removeItem("username");
+    localStorage.removeItem("UserId");
+    localStorage.removeItem("ProfileId");
     navigate("/login");
   };
 

@@ -1,5 +1,5 @@
 import { BaseModel } from "./base";
-
+import { Company } from "./company";
 export interface Job extends BaseModel {
   company_id: number;
   title: string;
@@ -11,4 +11,5 @@ export interface Job extends BaseModel {
   adress: string;
   salary: string;
   end_date: string;
+  Company?: Company | null;
 }
