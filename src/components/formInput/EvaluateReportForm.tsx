@@ -28,14 +28,14 @@ const EvaluateReportForm: React.FC<any> = () => {
     state: "Hoàn thành",
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     thunkFunctionRecruitment.Update(newApply, dispatch);
 
     console.log(reportInfo);
     if (reportInfo.evaluation == null || reportInfo.evaluation === 0) {
       reportInfo.evaluation = 2;
     }
-    thunkFunctionEvaluation.Create(apply.profile_id, reportInfo, dispatch);
+    await thunkFunctionEvaluation.Create(apply.profile_id, reportInfo, dispatch);
     window.location.reload();
   };
 

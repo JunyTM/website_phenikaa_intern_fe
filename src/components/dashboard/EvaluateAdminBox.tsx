@@ -93,7 +93,7 @@ const EvaluateAdminBox: React.FC<any> = () => {
           <tr className="">
             <th className="w-[15rem] ">Tên sinh viên</th>
             <th className="w-[10rem] ">Mã sinh viên</th>
-            <th className="w-[17rem] ">Email</th>
+            <th className="w-[17rem] ">Vị trí</th>
             <th className="w-[25rem] ">Công ty</th>
             <th className="w-[15rem]">Đánh giá</th>
             <th className="w-[12rem] ">Ngày bắt đầu</th>
@@ -143,8 +143,8 @@ const EvaluateAdminBox: React.FC<any> = () => {
                           <td className="w-[10rem] text-center">
                             {item?.profile?.code}
                           </td>
-                          <td className="w-[17rem] pl-9">
-                            {item?.profile?.email}
+                          <td className="w-[17rem] text-center">
+                            {item?.internship_evaluate?.instructor}
                           </td>
                           <td className="w-[25rem] pl-14">
                             {item?.company?.name}

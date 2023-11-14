@@ -22,8 +22,15 @@ const ListReportApply: React.FC<any> = () => {
     thunkFunctionRecruitment.GetAll(dispatch);
   }, []);
 
-  const handleDenied = (idItem: number) => {
-    thunkFunctionRecruitment.Delete(idItem, dispatch);
+  const handleDenied = (item: Recruitment) => {
+    let recuritment = {
+      id: item.id,
+      profile_id: item.profile_id,
+      intern_job_id: item.intern_job_id,
+      accepted: true,
+      state: "Bị từ chối",
+    };
+    thunkFunctionRecruitment.Update(recuritment, dispatch);
     window.location.reload();
   };
 
@@ -76,7 +83,7 @@ const ListReportApply: React.FC<any> = () => {
               <tr>
                 <th className="w-[17rem]">Ứng viên</th>
                 <th className="w-[10rem]">Mã sv</th>
-                <th className="w-[15rem]">Email</th>
+                <th className="w-[15rem]">Vị trí</th>
                 <th className="w-[12rem]">Trang thái</th>
               </tr>
             </thead>
@@ -156,7 +163,7 @@ const ListReportApply: React.FC<any> = () => {
                           {apply?.accepted === false ? (
                             <button
                               className=" text-left font-medium opacity-75 hover:text-red-500 hover:underline"
-                              onClick={() => handleDenied(idChose)}
+                              onClick={() => handleDenied(apply)}
                             >
                               denied
                             </button>

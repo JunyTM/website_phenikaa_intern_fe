@@ -50,7 +50,7 @@ const ProfileApply: React.FC<any> = () => {
                         {item?.state === "Hoàn thành" ? (
                           <tr
                             key={index}
-                            className="h-12 hover:text-orange-500 font-medium text-slate-800 opacity-50"
+                            className="h-12 hover:text-orange-500 font-medium text-green-500 opacity-50"
                           >
                             <td className="text-ellipsis overflow-hidden w-[35rem] pr-3">
                               {item?.intern_job?.title}
