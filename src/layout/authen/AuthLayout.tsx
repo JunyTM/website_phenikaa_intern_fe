@@ -1,7 +1,7 @@
-import React from "react";
-import { AuthenticationForm } from "../../components/inputLogin";
+// import { AuthenticationForm } from "../../components/authen/AuthenticationForm";
 import { ToastContainer } from "react-toastify";
-const Login: React.FC<any> = () => {
+
+const AuthLayout: React.FC<any> = ({ children: Children }: any) => {
   return (
     <div className="w-[100vw] h-[100vh] pt-[3%]">
       <div className="w-[80%] h-[90%] m-auto rounded-md bg-violet-50 shadow-2xl shadow-violet-200 flex flex-row">
@@ -15,7 +15,7 @@ const Login: React.FC<any> = () => {
             </p>
           </div>
           <div className="w-96 m-auto">
-            <AuthenticationForm />
+            <Children />
           </div>
         </div>
         <div className="w-[35%] h-full rounded-r-md bg-gradient-to-b from-indigo-200">
@@ -30,4 +30,4 @@ const Login: React.FC<any> = () => {
   );
 };
 
-export default Login;
+export default AuthLayout;

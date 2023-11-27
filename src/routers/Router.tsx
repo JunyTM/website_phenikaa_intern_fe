@@ -1,9 +1,12 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Auth from "../views/auth/Auth";
+// import Auth from "../views/auth/Auth";
+import AuthLayout from "../layout/authen/AuthLayout";
 import Role from "../views/role/Role";
-import Login from "../views/login/Login";
+
+import { Auth, LoginPage } from "../views/auth";
+
 import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
 import InternShip from "../views/intern/InternShip";
@@ -15,9 +18,10 @@ import Page404 from "../views/error/Page404";
 
 const Router: React.FC = () => {
   const router = createBrowserRouter([
-    { path: "/login", element: <Login /> },
-
-    { path: "/", element: <Auth children={Login} /> },
+    { path: "/", element: <Auth children={LoginPage} /> },
+    { path: "/login", element: <LoginPage /> },
+    { path: "/register", element: <AuthLayout /> },
+    { path: "/forgot-password", element: <Page404 /> },
     {
       path: "/home",
       element: <Role role={["student", "company", "admin"]} children={Home} />,

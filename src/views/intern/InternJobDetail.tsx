@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/layout/header/Header";
+import Header from "../../layout/header/Header";
 import InternJobInfoDetail from "../../components/internDashboard/InternJobInfoDetail";
 import InternCV from "../../components/internDashboard/InternCV";
 import { useParams } from "react-router-dom";

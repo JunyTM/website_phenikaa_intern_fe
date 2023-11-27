@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.css";
-import Header from "../../components/layout/header/Header";
-import NavBar from "../../components/layout/navbar/NavBar";
-import NavBarIcon from "../../components/layout/navbar/NavBarIcon";
+import Header from "../../layout/header/Header";
+import NavBar from "../../layout/navbar/NavBar";
+import NavBarIcon from "../../layout/navbar/NavBarIcon";
 import ProfileInfoDetail from "../../components/profileDashboard/ProfileInfoDetail";
 import ProfileApply from "../../components/profileDashboard/ListProfileApply";
 

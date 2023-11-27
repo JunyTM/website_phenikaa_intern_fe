@@ -23,6 +23,7 @@ export const AuthenticationForm: React.FC<any> = () => {
   const fetching: boolean = useSelector(
     (state: RootState) => state.auth.isFetching
   );
+
   const [type, toggle] = useToggle(["ĐĂNG NHẬP", "ĐĂNG KÝ"]);
   const [isLogin, setIsLogin] = useState(true);
   const [credentials, setCredentials] = useState({
@@ -32,6 +33,7 @@ export const AuthenticationForm: React.FC<any> = () => {
     email: "",
     phone: "",
   });
+
 
   const validate = (values: string) => {
     return /^\S+@\S+$/.test(values) ? null : "Invalid email";
