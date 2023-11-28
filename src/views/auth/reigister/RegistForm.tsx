@@ -25,99 +25,129 @@ const RegistForm: React.FC<any> = () => {
 
   return (
     <div>
-      <Text
-        className="text-center mt-8 text-5xl font-extrabold"
-        size="lg"
-        fw={500}
-      >
-        ĐĂNG NHẬP
-      </Text>
+      <div>
+        <Text
+          className="text-center mt-16 text-5xl font-extrabold"
+          size="lg"
+          fw={500}
+        >
+          ĐĂNG KÝ
+        </Text>
 
-      <Divider label="thông tin của bạn" labelPosition="center" my="lg" />
+        <Divider
+          label="thông tin của bạn"
+          labelPosition="center"
+          className="w-[50%] m-auto my-7"
+        />
 
-      <form id="login" name="login">
-        <Stack>
-          <TextInput
-            label="Tên đăng nhập"
-            name="username"
-            placeholder="20010784@phenikaa-uni ..."
-            onChange={(event) =>
-              setCredentials((prev) => ({
-                ...prev,
-                username: event.target.value,
-              }))
-            }
-            radius="md"
-            required
-          />
+        <form id="login" name="login">
+          <div className="mx-20">
+            <div className="flex flex-row">
+              <TextInput
+                className="w-72 mr-10"
+                label="Họ và tên"
+                name="username"
+                placeholder="20010784@phenikaa-uni ..."
+                onChange={(event) =>
+                  setCredentials((prev) => ({
+                    ...prev,
+                    username: event.target.value,
+                  }))
+                }
+                radius="md"
+                required
+              />
+              <TextInput
+                className="w-60"
+                label="Mã sinh viên"
+                name="username"
+                placeholder="20010784@phenikaa-uni ..."
+                onChange={(event) =>
+                  setCredentials((prev) => ({
+                    ...prev,
+                    username: event.target.value,
+                  }))
+                }
+                radius="md"
+                required
+              />
+            </div>
 
-          <PasswordInput
-            required
-            label="Mật khẩu:"
-            name="password"
-            placeholder="********"
-            onChange={(event) => {
-              setCredentials((prev) => ({
-                ...prev,
-                password: event.target.value,
-              }));
-            }}
-            error={
-              credentials.password.length > 0 &&
-              credentials.password.length <= 5 &&
-              "Password should include at least 5 characters"
-            }
-            radius="md"
-          />
-        </Stack>
+            <TextInput
+              label="Tên đăng nhập"
+              name="username"
+              placeholder="20010784@phenikaa-uni ..."
+              onChange={(event) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  username: event.target.value,
+                }))
+              }
+              radius="md"
+              required
+            />
 
-        <div className="flex flex-row justify-end mt-5">
-          <Anchor
-            component="button"
-            type="button"
-            c="dimmed"
-            onClick={() => {
-              navigate("/forgot-password");
-            }}
-            size="xs"
-            className="text-sm font-semibold"
-          >
-            Quên mật khẩu?
-          </Anchor>
-        </div>
+            <TextInput
+              label="Tên đăng nhập"
+              name="username"
+              placeholder="20010784@phenikaa-uni ..."
+              onChange={(event) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  username: event.target.value,
+                }))
+              }
+              radius="md"
+              required
+            />
 
-        <div className="absolute right-[40%] bottom-[12%] text-md font-medium">
-          <Anchor
-            component="button"
-            type="button"
-            c="dimmed"
-            onClick={() => {}}
-            size="xs"
-          >
-            Bạn chưa có tài khoản?
-            <Link to="/register" className="hover:text-blue-500 ">
-              {" "}
-              Đăng ký ngay!{" "}
-            </Link>
-          </Anchor>
-        </div>
+            <PasswordInput
+              required
+              label="Mật khẩu:"
+              name="password"
+              placeholder="********"
+              onChange={(event) => {
+                setCredentials((prev) => ({
+                  ...prev,
+                  password: event.target.value,
+                }));
+              }}
+              error={
+                credentials.password.length > 0 &&
+                credentials.password.length <= 5 &&
+                "Password should include at least 5 characters"
+              }
+              radius="md"
+            />
+          </div>
 
-        <div className="mt-4 ml-7">
-          <Button
-            onClick={handleSumit}
-            w={300}
-            h={45}
-            style={{ backgroundColor: "#5a67d8" }}
-            radius="xl"
-            variant="filled"
-            color="indigo"
-            loading={false}
-            loaderProps={{ type: "dots" }}
-          >
-            Đăng nhập
-          </Button>
-        </div>
-      </form>
+          <div className="absolute right-[40%] bottom-[12%] text-xs font-medium">
+            <p>
+              Bạn đã có tài khoản?
+              <Link to="/login" className="hover:text-blue-500 ">
+                {" "}
+                Quay lại tại đây!{" "}
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-4 ml-7">
+            <Button
+              onClick={handleSumit}
+              w={300}
+              h={45}
+              style={{ backgroundColor: "#5a67d8" }}
+              radius="xl"
+              variant="filled"
+              color="indigo"
+              loading={false}
+              loaderProps={{ type: "dots" }}
+            >
+              Đăng ký
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
