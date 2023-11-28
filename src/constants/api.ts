@@ -11,6 +11,10 @@ export const HEADERS = {
     "Content-Type": "application/json; charset=UTF-8",
     authorization: `Bearer ${Cookies.get("AccessToken")}`,
   }),
+
+  file_header: () => ({
+    "Content-Type": "multipart/form-data",
+  }),
 };
 
 export const APIS_URL = {

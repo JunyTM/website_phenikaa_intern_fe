@@ -1,4 +1,5 @@
-import { UserLogin, UserRegister } from "./../../model/user";
+import { UserRegister } from "./../../model/user";
+import { FormLogin } from "./../../model/authen/formAuthen";
 import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
 import { loginSuccess, loginFail } from "./authenSclice";
@@ -6,7 +7,7 @@ import { notify } from "../../utils/toast";
 import Cookies from "js-cookie";
 
 const login = async (
-  { username, password }: UserLogin,
+  { username, password }: FormLogin,
   navigate: any,
   dispatch: any
 ) => {
@@ -18,8 +19,9 @@ const login = async (
   if (response?.data?.data?.access_token) {
     Cookies.set("AccessToken", response.data.data.access_token);
     Cookies.set("RefreshToken", response.data.data.refresh_token);
-    localStorage.setItem("UserRole", response.data.data.role);
+
     localStorage.setItem("UserId", response.data.data.id);
+    localStorage.setItem("UserRole", response.data.data.role);
     localStorage.setItem("username", response.data.data.username);
   }
   if (!error && response.status === 200) {

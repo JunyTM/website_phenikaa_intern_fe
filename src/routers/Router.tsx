@@ -1,11 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// import Auth from "../views/auth/Auth";
-import AuthLayout from "../layout/authen/AuthLayout";
 import Role from "../views/role/Role";
-
-import { Auth, LoginPage } from "../views/auth";
+import { Auth, LoginPage, RegistPage } from "../views/auth";
 
 import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
@@ -20,7 +17,7 @@ const Router: React.FC = () => {
   const router = createBrowserRouter([
     { path: "/", element: <Auth children={LoginPage} /> },
     { path: "/login", element: <LoginPage /> },
-    { path: "/register", element: <AuthLayout /> },
+    { path: "/register", element: <RegistPage /> },
     { path: "/forgot-password", element: <Page404 /> },
     {
       path: "/home",
