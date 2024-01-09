@@ -42,13 +42,19 @@ export const APIS_URL = {
       method: "POST",
       headers: HEADERS.header(),
     }),
+
+    forgotPassword: () => ({
+      endPoint: "/users/forgot-password",
+      method: "POST",
+      headers: HEADERS.header(),
+    }),
   },
 
   USER: {
     reset: () => ({
       endPoint: "/users/reset-password",
       method: "POST",
-      headers: HEADERS.header(),
+      headers: HEADERS.headerToken(),
     }),
 
     update: () => ({

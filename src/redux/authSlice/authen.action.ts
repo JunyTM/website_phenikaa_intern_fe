@@ -1,37 +1,36 @@
-import { UserRegister } from "./../../model/user";
-import { FormLogin } from "./../../model/authen/formAuthen";
+import {
+  UserLogin,
+  UserRegister,
+  UserForgotPassword,
+} from "./../../model/user";
 import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
-import { loginSuccess, loginFail } from "./authenSclice";
+import {
+  loginSuccess,
+  loginFail,
+  loginPending,
+  isPending,
+} from "./authenSclice";
 import { notify } from "../../utils/toast";
-import Cookies from "js-cookie";
 
 const login = async (
-  { username, password }: FormLogin,
+  { username, password }: UserLogin,
   navigate: any,
   dispatch: any
 ) => {
+  dispatch(loginPending());
   const api = APIS_URL.AUTH.login();
   const { response, error }: any = await useCallApi({
     ...api,
     payload: { username, password },
   });
-  if (response?.data?.data?.access_token) {
-    Cookies.set("AccessToken", response.data.data.access_token);
-    Cookies.set("RefreshToken", response.data.data.refresh_token);
-
-    localStorage.setItem("UserId", response.data.data.id);
-    localStorage.setItem("UserRole", response.data.data.role);
-    localStorage.setItem("username", response.data.data.username);
-  }
   if (!error && response.status === 200) {
-    notify("success", "Đăng nhập thành công");
     dispatch(loginSuccess({ ...response.data.data }));
     navigate("/home");
+    notify("success", "Đăng nhập thành công");
   } else {
-    notify("error", "Đăng nhập thất bại");
     dispatch(loginFail());
-    console.log("Dang nhap that bai");
+    notify("error", "Đăng nhập thất bại");
   }
 };
 
@@ -40,6 +39,7 @@ const register = async (
   navigate: any,
   dispatch: any
 ) => {
+  dispatch(isPending(true));
   const api = APIS_URL.AUTH.register();
   const { response, error }: any = await useCallApi({
     ...api,
@@ -47,17 +47,39 @@ const register = async (
   });
   if (!error && response.status === 200) {
     login(
-      { username: UserRegister.username, password: UserRegister.password },
+      { username: UserRegister.email, password: UserRegister.password },
       navigate,
       dispatch
     );
   } else {
+    dispatch(loginFail());
     notify("error", "Đăng ký thất bại");
-    console.log("Dang ky that bai");
   }
+};
+
+const forgotPassword = async (
+  { email }: UserForgotPassword,
+  navigate: any,
+  dispatch: any
+) => {
+  dispatch(isPending(true));
+  const api = APIS_URL.AUTH.forgotPassword();
+  const { response, error }: any = await useCallApi({
+    ...api,
+    payload: { email },
+  });
+
+  if (!error && response.status === 200) {
+    notify("success", "Vui lòng kiểm tra email của bạn");
+    navigate("/login");
+  } else {
+    notify("error", "Email không hợp lệ");
+  }
+  dispatch(isPending(false));
 };
 
 export const thunkFunctionAuth = {
   login,
   register,
+  forgotPassword,
 };

@@ -1,42 +1,44 @@
 import { BaseModel } from "./base";
-import { Role } from "./role";
+import { RoleModel } from "./role";
+import { Profile } from "./Profile";
 
-export interface User extends BaseModel {
+// Declear db models
+export interface UserModel extends BaseModel {
   username: string;
   password: string;
-  user_roles: UserRole;
+  user_roles: UserRoleModel;
 }
 
-export interface UserRole extends BaseModel {
+export interface UserRoleModel extends BaseModel {
   user_id: number;
   role_id: number;
   active: boolean;
-  role: Role;
+  role: RoleModel;
 }
 
-export interface UserRegistry extends User {
-  fullName: string;
-  email: string;
-  phone: string;
-}
-
-export interface UserReponse {
-  Id: number;
-  role: string;
-  username: string;
-  access_token: string;
-  refresh_token: string;
-}
-
+// Declear request & response models
 export interface UserLogin {
   username: string;
   password: string;
 }
 
 export interface UserRegister {
-  username: string;
-  password: string;
   fullName: string;
   email: string;
+  password: string;
+  code: string;
   phone: string;
+  birthday: string;
+}
+export interface UserReponse {
+  Id: number;
+  role: string;
+  username: string;
+  // access_token: string;
+  // refresh_token: string;
+  Profile?: Profile;
+}
+
+export interface UserForgotPassword {
+  email: string;
 }

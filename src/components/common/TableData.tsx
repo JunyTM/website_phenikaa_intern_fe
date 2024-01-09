@@ -1,6 +1,6 @@
 import React from "react";
 import { Rating } from "@mantine/core";
-import { Recruitment } from "../../model/recruitment";
+// import { Recruitment } from "../../model/recruitment";
 
 const TableData: React.FC<any> = () => {
   return (

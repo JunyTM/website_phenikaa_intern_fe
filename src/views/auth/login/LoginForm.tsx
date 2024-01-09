@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/Store";
 import {
   TextInput,
   PasswordInput,
@@ -10,16 +12,22 @@ import {
   Stack,
 } from "@mantine/core";
 import AuthLayout from "../../../layout/authen/AuthLayout";
+import { UserLogin } from "../../../model/user";
+import { thunkFunctionAuth } from "../../../redux/authSlice/authen.action";
 
 const LoginForm: React.FC<any> = () => {
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state: RootState) => state.auth.isFetching);
+
+  const [credentials, setCredentials] = useState<UserLogin>({
     username: "",
     password: "",
   });
 
   const handleSumit = (e: any) => {
     e.preventDefault();
+    thunkFunctionAuth.login(credentials, navigate, dispatch);
   };
 
   return (
@@ -92,7 +100,7 @@ const LoginForm: React.FC<any> = () => {
             </Anchor>
           </div>
 
-          <div className="absolute right-[40%] bottom-[12%] text-xs font-medium">
+          <div className="absolute right-[40%] bottom-[12%] text-sm font-semibold text-gray-400">
             <p>
               Bạn chưa có tài khoản?
               <Link to="/register" className="hover:text-blue-500 ">
@@ -111,7 +119,7 @@ const LoginForm: React.FC<any> = () => {
               radius="xl"
               variant="filled"
               color="indigo"
-              loading={false}
+              loading={isFetching}
               loaderProps={{ type: "dots" }}
             >
               Đăng nhập

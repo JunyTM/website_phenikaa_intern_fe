@@ -1,6 +1,6 @@
 import { BaseModel } from "./base";
 
-export interface Role extends BaseModel {
+export interface RoleModel extends BaseModel {
     code: string;
     name: string;
     description?: string;

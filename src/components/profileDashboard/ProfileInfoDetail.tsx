@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { thunkFunctionProfile } from "../../redux/profileSlice/profile.action";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/Store";

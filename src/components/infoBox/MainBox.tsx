@@ -2,9 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mantine/core";
 import { IconUnlink } from "@tabler/icons-react";
-type Props = {};
 
-const MainBox: React.FC<any> = (props: Props) => {
+const MainBox: React.FC<any> = () => {
   return (
     <div className="w-[30%] h-[23rem] top-[9rem] left-[32rem] bg-slate-100 shadow-2xl rounded-xl absolute">
       <div className="w-full h-full rounded-xl shadow-inner">

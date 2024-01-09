@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Role from "../views/role/Role";
-import { Auth, LoginPage, RegistPage } from "../views/auth";
+import { Auth, LoginPage, RegistPage, ForgotPage } from "../views/auth";
 
 import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
@@ -18,7 +18,7 @@ const Router: React.FC = () => {
     { path: "/", element: <Auth children={LoginPage} /> },
     { path: "/login", element: <LoginPage /> },
     { path: "/register", element: <RegistPage /> },
-    { path: "/forgot-password", element: <Page404 /> },
+    { path: "/forgot-password", element: <ForgotPage /> },
     {
       path: "/home",
       element: <Role role={["student", "company", "admin"]} children={Home} />,
@@ -56,7 +56,7 @@ const Router: React.FC = () => {
       path: "/interview",
       element: <Role role={["company"]} children={ReportDashboard} />,
     },
-
+    { path: "/404", element: <Page404 /> },
     { path: "*", element: <Page404 /> },
   ]);
 

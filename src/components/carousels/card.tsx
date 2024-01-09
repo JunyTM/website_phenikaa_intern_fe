@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-type Props = {}
+// type Props = {}
 
-const card = (props: Props) => {
-  return (
-    <div>card</div>
-  )
-}
+// const card = (props: Props) => {
+//   return (
+//     <div>card</div>
+//   )
+// }

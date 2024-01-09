@@ -56,6 +56,11 @@ export const authSlice = createSlice({
       };
       return state;
     },
+
+    isPending: (state, action) => {
+      state.isFetching = action.payload;
+      return state;
+    }
   },
 });
 
@@ -67,6 +72,7 @@ export const {
   refeshTokenFail,
   loginSuccess,
   refeshTokenSuccess,
+  isPending,
 } = authSlice.actions;
 
 export default authSlice.reducer;
