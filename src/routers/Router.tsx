@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Role from "../views/role/Role";
+import { ROUTE } from "../constants/router";
 import { Auth, LoginPage, RegistPage, ForgotPage } from "../views/auth";
 
 import Home from "../views/home/Home";
@@ -16,47 +17,41 @@ import Page404 from "../views/error/Page404";
 const Router: React.FC = () => {
   const router = createBrowserRouter([
     { path: "/", element: <Auth children={LoginPage} /> },
-    { path: "/login", element: <LoginPage /> },
-    { path: "/register", element: <RegistPage /> },
-    { path: "/forgot-password", element: <ForgotPage /> },
+    { path: ROUTE.LOGIN.PATH, element: <LoginPage /> },
+    { path: ROUTE.REGISTER.PATH, element: <RegistPage /> },
+    { path: ROUTE.FORGOT_PASSWORD.PATH, element: <ForgotPage /> },
     {
-      path: "/home",
-      element: <Role role={["student", "company", "admin"]} children={Home} />,
+      path: ROUTE.HOME.PATH,
+      element: <Role role={ROUTE.HOME.AUTHOR} children={Home} />,
     },
     {
-      path: "/internship",
-      element: (
-        <Role role={["student", "company", "admin"]} children={InternShip} />
-      ),
+      path: ROUTE.COMPANY.PATH,
+      element: <Role role={ROUTE.COMPANY.AUTHOR} children={CompanyScreen} />,
     },
-
     {
-      path: "/company",
-      element: <Role role={["company", "admin"]} children={CompanyScreen} />,
+      path: ROUTE.INTERNSHIP.PATH,
+      element: <Role role={ROUTE.INTERNSHIP.AUTHOR} children={InternShip} />,
     },
-
-    { path: "/coding", element: <Page404 /> },
-
     {
-      path: "/internship/:idJob",
+      path: ROUTE.INTERNSHIP.JOB_DETAIL.PATH,
       element: (
         <Role
-          role={["student", "company", "admin"]}
+          role={ROUTE.INTERNSHIP.JOB_DETAIL.AUTHOR}
           children={InternJobDetail}
         />
       ),
     },
 
     {
-      path: "/profile",
-      element: <Role role={["student"]} children={Profile} />,
+      path: ROUTE.PROFILE.PATH,
+      element: <Role role={ROUTE.PROFILE.AUTHOR} children={Profile} />,
     },
 
     {
-      path: "/interview",
-      element: <Role role={["company"]} children={ReportDashboard} />,
+      path: ROUTE.REPORT_INTERNSHIP.PATH,
+      element: <Role role={ROUTE.REPORT_INTERNSHIP.AUTHOR} children={ReportDashboard} />,
     },
-    { path: "/404", element: <Page404 /> },
+    { path: ROUTE.ERROR.PATH, element: <Page404 /> },
     { path: "*", element: <Page404 /> },
   ]);
 

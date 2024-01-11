@@ -2,11 +2,9 @@ import { useState } from "react";
 import AuthLayout from "../../../layout/authen/AuthLayout";
 import {
   TextInput,
-  PasswordInput,
   Text,
   Button,
   Divider,
-  Checkbox,
 } from "@mantine/core";
 import { notify } from "../../../utils/toast";
 import { Link, useNavigate } from "react-router-dom";

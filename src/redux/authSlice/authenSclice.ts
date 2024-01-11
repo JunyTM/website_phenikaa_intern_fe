@@ -57,6 +57,14 @@ export const authSlice = createSlice({
       return state;
     },
 
+    logOut: (state) => {
+      state = {
+        user: null,
+        isFetching: false,
+      };
+      return state;
+    },
+
     isPending: (state, action) => {
       state.isFetching = action.payload;
       return state;
@@ -73,6 +81,7 @@ export const {
   loginSuccess,
   refeshTokenSuccess,
   isPending,
+  logOut,
 } = authSlice.actions;
 
 export default authSlice.reducer;

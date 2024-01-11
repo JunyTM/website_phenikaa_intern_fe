@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 import Cookies from "js-cookie";
 import { useNavigate, Link } from "react-router-dom";
+import * as authSlice from "../../redux/authSlice/authenSclice";
+import { RootState } from "../../redux/Store";
+import { useSelector, useDispatch } from "react-redux";
+import { UserReponse } from "../../model/user";
 
 const Header: React.FC<any> = () => {
-  const username = localStorage.getItem("username");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const userName = useSelector(
+    (state: RootState) => state.auth.user?.Profile?.phone
+  );
   const handelSignOut = () => {
     Cookies.remove("AccessToken");
     Cookies.remove("RefreshToken");
-    localStorage.removeItem("UserRole");
-    localStorage.removeItem("CompanyId");
-    localStorage.removeItem("username");
-    localStorage.removeItem("UserId");
-    localStorage.removeItem("ProfileId");
+    dispatch(authSlice.logOut());
     navigate("/login");
   };
 
@@ -41,7 +43,7 @@ const Header: React.FC<any> = () => {
 
       <div className="ml-28 w-30% h-full flex flex-row items-center justify-between">
         <p className="text-md font-semibold opacity-90">
-          {username ? username : "Tô Kim Mạnh"}
+          {userName ? userName : "Tô Kim Mạnh"}
         </p>
         <Button
           className="w-28 h-8"

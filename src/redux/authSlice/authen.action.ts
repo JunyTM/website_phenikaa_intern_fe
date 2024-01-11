@@ -5,12 +5,8 @@ import {
 } from "./../../model/user";
 import { APIS_URL } from "../../constants/api";
 import { useCallApi } from "../../utils/apiCall";
-import {
-  loginSuccess,
-  loginFail,
-  loginPending,
-  isPending,
-} from "./authenSclice";
+import * as authenticate from "./authenSclice";
+import { ROUTE } from "../../constants/router";
 import { notify } from "../../utils/toast";
 
 const login = async (
@@ -18,19 +14,33 @@ const login = async (
   navigate: any,
   dispatch: any
 ) => {
-  dispatch(loginPending());
+  dispatch(authenticate.loginPending());
   const api = APIS_URL.AUTH.login();
   const { response, error }: any = await useCallApi({
     ...api,
     payload: { username, password },
   });
   if (!error && response.status === 200) {
-    dispatch(loginSuccess({ ...response.data.data }));
-    navigate("/home");
+    dispatch(authenticate.loginSuccess({ ...response.data.data }));
+    navigate(ROUTE.HOME.PATH);
     notify("success", "Đăng nhập thành công");
   } else {
-    dispatch(loginFail());
+    dispatch(authenticate.loginFail());
     notify("error", "Đăng nhập thất bại");
+  }
+};
+
+const refesh = async (navigate: any, dispatch: any) => {
+  dispatch(authenticate.refeshTokenPending());
+  const api = APIS_URL.AUTH.refesh();
+  const { response, error }: any = await useCallApi({ ...api });
+  if (!error && response.status === 200) {
+    dispatch(authenticate.refeshTokenSuccess({ ...response.data.data }));
+    notify("success", "Chào mừng quay trở lại");
+  } else {
+    dispatch(authenticate.refeshTokenFail());
+    notify("error", "Đăng nhập thất bại");
+    navigate(ROUTE.LOGIN.PATH);
   }
 };
 
@@ -39,7 +49,7 @@ const register = async (
   navigate: any,
   dispatch: any
 ) => {
-  dispatch(isPending(true));
+  dispatch(authenticate.isPending(true));
   const api = APIS_URL.AUTH.register();
   const { response, error }: any = await useCallApi({
     ...api,
@@ -52,7 +62,7 @@ const register = async (
       dispatch
     );
   } else {
-    dispatch(loginFail());
+    dispatch(authenticate.loginFail());
     notify("error", "Đăng ký thất bại");
   }
 };
@@ -62,7 +72,7 @@ const forgotPassword = async (
   navigate: any,
   dispatch: any
 ) => {
-  dispatch(isPending(true));
+  dispatch(authenticate.isPending(true));
   const api = APIS_URL.AUTH.forgotPassword();
   const { response, error }: any = await useCallApi({
     ...api,
@@ -71,15 +81,16 @@ const forgotPassword = async (
 
   if (!error && response.status === 200) {
     notify("success", "Vui lòng kiểm tra email của bạn");
-    navigate("/login");
+    navigate(ROUTE.LOGIN.PATH);
   } else {
     notify("error", "Email không hợp lệ");
   }
-  dispatch(isPending(false));
+  dispatch(authenticate.isPending(false));
 };
 
 export const thunkFunctionAuth = {
   login,
+  refesh,
   register,
   forgotPassword,
 };

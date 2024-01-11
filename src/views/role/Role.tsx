@@ -1,10 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/Store";
-import { Profile } from "../../model/Profile";
 import Page404 from "../error/Page404";
 import { useNavigate } from "react-router-dom";
-
+import { thunkFunctionAuth } from "../../redux/authSlice/authen.action";
 const Role: React.FC<{ role: string[]; children: React.FC }> = ({
   role,
   children: Children,
@@ -12,18 +11,14 @@ const Role: React.FC<{ role: string[]; children: React.FC }> = ({
   role: string[];
   children: React.FC;
 }) => {
-  // const profile: Profile | null = useSelector(
-  //   (state: RootState) => state.profile.list[0]
-  // );
-  // const checkRole = role.find((r: string) => r === profile?.user.user_roles.role.code);
   const navigate = useNavigate();
-  const roleLocal = localStorage.getItem("UserRole");
-  console.log(roleLocal);
-  console.log(role);
-  if (role === undefined || roleLocal === null) {
-    navigate("/login");
+  const dispatch = useDispatch();
+  const userCredentials = useSelector((state: RootState) => state.auth.user);
+  console.log(userCredentials);
+  if (role === undefined || userCredentials?.role === "") {
+    thunkFunctionAuth.refesh(navigate, dispatch);
   }
-  const checkRole = role.find((r: string) => r === roleLocal);
+  const checkRole = role.find((r: string) => r === userCredentials?.role);
   console.log(checkRole);
   return (
     <React.Fragment>

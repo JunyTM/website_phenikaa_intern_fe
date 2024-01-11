@@ -32,9 +32,9 @@ export const APIS_URL = {
     }),
 
     refesh: () => ({
-      enpoint: "/refresh",
+      endPoint: "/refresh",
       method: "POST",
-      headers: HEADERS.header(),
+      headers: HEADERS.headerToken(),
     }),
 
     register: () => ({
