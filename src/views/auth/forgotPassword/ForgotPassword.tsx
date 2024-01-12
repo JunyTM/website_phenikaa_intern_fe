@@ -12,6 +12,7 @@ import { UserForgotPassword } from "../../../model/user";
 import { useSelector, useDispatch } from "react-redux";
 import { ValidateEmail } from "../../../utils/tools";
 import { thunkFunctionAuth } from "../../../redux/authSlice/authen.action";
+import { ROUTE } from "../../../constants/router";
 
 const ForgotPassword: React.FC<any> = () => {
   const dispatch = useDispatch();
@@ -84,7 +85,7 @@ const ForgotPassword: React.FC<any> = () => {
       <div className="absolute right-[40%] bottom-[12%] text-sm font-semibold text-gray-400">
         <p>
           Nhớ ra rồi,
-          <Link to="/login" className="hover:text-blue-500">
+          <Link to={ROUTE.LOGIN.PATH} className="hover:text-blue-500">
             {" "}
             quay lại đăng nhập!{" "}
           </Link>

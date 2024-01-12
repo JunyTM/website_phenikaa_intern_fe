@@ -7,6 +7,7 @@ import * as authSlice from "../../redux/authSlice/authenSclice";
 import { RootState } from "../../redux/Store";
 import { useSelector, useDispatch } from "react-redux";
 import { UserReponse } from "../../model/user";
+import { ROUTE } from "../../constants/router";
 
 const Header: React.FC<any> = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header: React.FC<any> = () => {
     Cookies.remove("AccessToken");
     Cookies.remove("RefreshToken");
     dispatch(authSlice.logOut());
-    navigate("/login");
+    navigate(ROUTE.LOGIN.PATH);
   };
 
   return (

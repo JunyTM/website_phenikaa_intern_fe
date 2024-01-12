@@ -14,6 +14,7 @@ import {
 import AuthLayout from "../../../layout/authen/AuthLayout";
 import { UserLogin } from "../../../model/user";
 import { thunkFunctionAuth } from "../../../redux/authSlice/authen.action";
+import { ROUTE } from "../../../constants/router";
 
 const LoginForm: React.FC<any> = () => {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ const LoginForm: React.FC<any> = () => {
               type="button"
               c="dimmed"
               onClick={() => {
-                navigate("/forgot-password");
+                navigate(ROUTE.FORGOT_PASSWORD.PATH);
               }}
               size="xs"
               className="text-sm font-semibold"
@@ -103,7 +104,7 @@ const LoginForm: React.FC<any> = () => {
           <div className="absolute right-[40%] bottom-[12%] text-sm font-semibold text-gray-400">
             <p>
               Bạn chưa có tài khoản?
-              <Link to="/register" className="hover:text-blue-500 ">
+              <Link to={ROUTE.REGISTER.PATH} className="hover:text-blue-500 ">
                 {" "}
                 Đăng ký ngay!{" "}
               </Link>

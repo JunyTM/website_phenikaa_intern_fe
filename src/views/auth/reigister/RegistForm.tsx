@@ -22,6 +22,7 @@ import {
 import AuthLayout from "../../../layout/authen/AuthLayout";
 import { UserRegister } from "../../../model/user";
 import { thunkFunctionAuth } from "../../../redux/authSlice/authen.action";
+import { ROUTE } from "../../../constants/router";
 
 const RegistForm: React.FC<any> = () => {
   const navigate = useNavigate();
@@ -235,7 +236,7 @@ const RegistForm: React.FC<any> = () => {
           <div className="absolute right-[40%] bottom-[12%] text-sm font-semibold text-gray-400">
             <p>
               Bạn đã có tài khoản?
-              <Link to="/login" className="hover:text-blue-500 ">
+              <Link to={ROUTE.LOGIN.PATH} className="hover:text-blue-500 ">
                 {" "}
                 Quay lại tại đây.{" "}
               </Link>

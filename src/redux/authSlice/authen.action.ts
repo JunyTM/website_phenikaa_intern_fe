@@ -8,6 +8,7 @@ import { useCallApi } from "../../utils/apiCall";
 import * as authenticate from "./authenSclice";
 import { ROUTE } from "../../constants/router";
 import { notify } from "../../utils/toast";
+import Cookies from "js-cookie";
 
 const login = async (
   { username, password }: UserLogin,
@@ -21,6 +22,8 @@ const login = async (
     payload: { username, password },
   });
   if (!error && response.status === 200) {
+    Cookies.set("AccessToken", response.data.data.access_token);
+    Cookies.set("RefreshToken", response.data.data.refresh_token);
     dispatch(authenticate.loginSuccess({ ...response.data.data }));
     navigate(ROUTE.HOME.PATH);
     notify("success", "Đăng nhập thành công");
@@ -34,12 +37,18 @@ const refesh = async (navigate: any, dispatch: any) => {
   dispatch(authenticate.refeshTokenPending());
   const api = APIS_URL.AUTH.refesh();
   const { response, error }: any = await useCallApi({ ...api });
+  Cookies.remove("AccessToken");
+  Cookies.remove("RefreshToken");
   if (!error && response.status === 200) {
     dispatch(authenticate.refeshTokenSuccess({ ...response.data.data }));
+    Cookies.set("AccessToken", response.data.data.access_token);
+    Cookies.set("RefreshToken", response.data.data.refresh_token);
     notify("success", "Chào mừng quay trở lại");
   } else {
     dispatch(authenticate.refeshTokenFail());
     notify("error", "Đăng nhập thất bại");
+    Cookies.remove("AccessToken");
+    Cookies.remove("RefreshToken");
     navigate(ROUTE.LOGIN.PATH);
   }
 };

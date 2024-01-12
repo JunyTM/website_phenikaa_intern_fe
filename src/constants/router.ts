@@ -2,7 +2,7 @@ import { ROLE } from "./role";
 
 export const ROUTE = {
   LOGIN: {
-    PATH: "/login",
+    PATH: "/",
   },
   REGISTER: {
     PATH: "/register",

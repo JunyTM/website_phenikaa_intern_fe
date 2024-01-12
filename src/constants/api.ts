@@ -12,6 +12,12 @@ export const HEADERS = {
     authorization: `Bearer ${Cookies.get("AccessToken")}`,
   }),
 
+  headerRefesh: () => ({
+    accept: "application/json",
+    "Content-Type": "application/json; charset=UTF-8",
+    authorization: `Bearer ${Cookies.get("AccessToken")};${Cookies.get("RefreshToken")}`,
+  }),
+
   file_header: () => ({
     "Content-Type": "multipart/form-data",
   }),
@@ -34,7 +40,7 @@ export const APIS_URL = {
     refesh: () => ({
       endPoint: "/refresh",
       method: "POST",
-      headers: HEADERS.headerToken(),
+      headers: HEADERS.headerRefesh(),
     }),
 
     register: () => ({

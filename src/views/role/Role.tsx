@@ -15,14 +15,13 @@ const Role: React.FC<{ role: string[]; children: React.FC }> = ({
   const dispatch = useDispatch();
   const userCredentials = useSelector((state: RootState) => state.auth.user);
   console.log(userCredentials);
-  if (role === undefined || userCredentials?.role === "") {
+  if (role === undefined || userCredentials === null) {
     thunkFunctionAuth.refesh(navigate, dispatch);
   }
-  const checkRole = role.find((r: string) => r === userCredentials?.role);
-  console.log(checkRole);
+  var checkRole = role.find((r: string) => r === userCredentials?.role);
   return (
     <React.Fragment>
-      {checkRole !== undefined ? <Children /> : <Page404 />}
+      {checkRole !== undefined ? <Children /> : null}
     </React.Fragment>
   );
 };

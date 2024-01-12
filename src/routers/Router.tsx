@@ -16,8 +16,8 @@ import Page404 from "../views/error/Page404";
 
 const Router: React.FC = () => {
   const router = createBrowserRouter([
-    { path: "/", element: <Auth children={LoginPage} /> },
-    { path: ROUTE.LOGIN.PATH, element: <LoginPage /> },
+    { path: ROUTE.LOGIN.PATH, element: <Auth children={LoginPage} /> },
+    // { path: ROUTE.LOGIN.PATH, element: <LoginPage /> },
     { path: ROUTE.REGISTER.PATH, element: <RegistPage /> },
     { path: ROUTE.FORGOT_PASSWORD.PATH, element: <ForgotPage /> },
     {
