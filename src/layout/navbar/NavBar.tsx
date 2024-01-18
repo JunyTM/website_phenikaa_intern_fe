@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-type Props = {};
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/Store";
+import { UserReponse } from "../../model/user";
 
-const NavBar: React.FC<Props> = () => {
-  const role = localStorage.getItem("UserRole");
-  console.log(role);
-  const checkRoleAdmin = (role: string | null) => {
-    if (role != null && (role == "admin" || role == "company")) {
+const NavBar: React.FC<any> = () => {
+  const userInfo = useSelector((state: RootState) => state.auth.user);
+
+  const checkRoleAdmin = (role: string | undefined) => {
+    if (role != undefined && (role == "admin" || role == "company")) {
       return true;
     }
     return false;
@@ -24,7 +26,7 @@ const NavBar: React.FC<Props> = () => {
               Trang chủ
             </Link>
           </li>
-          {checkRoleAdmin(role) ? (
+          {checkRoleAdmin(userInfo?.role) ? (
             <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
               <Link
                 className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
@@ -34,7 +36,7 @@ const NavBar: React.FC<Props> = () => {
               </Link>
             </li>
           ) : null}
-          {role == "company" ? (
+          {userInfo?.role == "company" ? (
             <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
               <Link
                 className="text-slate-900 hover:text-orange-500 font-bold opacity-90"
@@ -52,7 +54,7 @@ const NavBar: React.FC<Props> = () => {
               Thực tập doanh nghiệp
             </Link>
           </li>
-          {role == "student" ? (
+          {userInfo?.role == "student" ? (
             <li className="h-12 mt-4 pt-3 pl-8 rounded-lg shadow-md bg-slate-300">
               <Link
                 className="text-slate-900 hover:text-orange-500 font-bold opacity-90"

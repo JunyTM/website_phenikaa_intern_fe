@@ -21,7 +21,7 @@ const Home: React.FC<any> = () => {
   }, []);
 
   return (
-    <div id="home" className="relative">
+    <div id="home" >
       <Header />
       <NavBar />
       <NavBarIcon />
