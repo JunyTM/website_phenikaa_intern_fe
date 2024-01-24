@@ -44,6 +44,8 @@ const updateProfile = async (data: Profile, dispatch: any) => {
   });
   if (!error && response.status === 200) {
     console.log("Update profile success");
+    // fix to build file
+    dispatch(getProfileInfo(dispatch));
   } else {
     console.log("Profile update fail");
   }

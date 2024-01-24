@@ -94,7 +94,7 @@ const ListReportApply: React.FC<any> = () => {
                   apply?.intern_job?.company_id === Number(CompanyId) &&
                   apply?.state === "Chờ phỏng vấn" || apply?.state === "Đang thực tập"
                 ) {
-                  let idChose = apply?.id !== undefined ? apply.id : 0;
+                  // let idChose = apply?.id !== undefined ? apply.id : 0;
                   return (
                     <tr
                       key={index}

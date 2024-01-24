@@ -34,6 +34,8 @@ const Create = async (data: any, dispatch: any) => {
   });
   if (!error && response.status === 200) {
     console.log("recruitment success");
+    // fix to build file
+    dispatch(GetAll(dispatch));
   } else {
     console.log("recruitment fail");
   }
@@ -51,6 +53,8 @@ const Update = async (data: any, dispatch: any) => {
   });
   if (!error && response.status === 200) {
     console.log("recruitment success");
+    // fix to build file
+    dispatch(GetAll(dispatch));
   } else {
     console.log("recruitment fail");
   }
@@ -67,6 +71,8 @@ const Delete = async (id: number, dispatch: any) => {
   });
   if (!error && response.status === 200) {
     console.log("recruitment success");
+    // fix to build file
+    dispatch(GetAll(dispatch));
   } else {
     console.log("recruitment fail");
   }

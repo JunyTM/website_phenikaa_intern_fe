@@ -16,6 +16,11 @@ const ProfileApply: React.FC<any> = () => {
 
   useEffect(() => {
     thunkFunctionRecruitment.GetAll(dispatch);
+    
+    // fix to build file
+    if (profileId === 0) {
+      setProfileId(0);
+    }
   }, []);
   // console.log(recuerment);
   return (

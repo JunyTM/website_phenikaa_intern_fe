@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  builderpro:
+    image: intern-frontend-builder:builder
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile.builder
+    networks:
+      - frontend
+
+  webpro:
+    image: intern-frontend:frontend
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - '3000:80'
+    networks:
+      - frontend
+networks:
+  frontend:
+    driver: bridge

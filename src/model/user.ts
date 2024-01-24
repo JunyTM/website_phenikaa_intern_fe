@@ -34,6 +34,7 @@ export interface UserReponse {
   Id: number;
   role: string;
   username: string;
+  fullname: string;
   // access_token: string;
   // refresh_token: string;
   Profile?: Profile;

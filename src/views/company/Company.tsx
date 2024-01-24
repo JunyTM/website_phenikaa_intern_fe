@@ -7,18 +7,21 @@ import CompanyAdminBox from "../../components/dashboard/CompanyAdminBox";
 import CompanyBox from "../../components/dashboard/CompanySelftBox";
 import EvaluateBox from "../../components/dashboard/EvaluateBox";
 import EvaluateAdminBox from "../../components/dashboard/EvaluateAdminBox";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/Store";
+
 const CompanyScreen: React.FC<any> = () => {
-  const role = localStorage.getItem("UserRole");
+  const userInfo = useSelector((state: RootState) => state.auth.user);
 
   return (
     <div id="Company" className="relative">
       <Header />
       <NavBar />
       <NavBarIcon />
-      {role === "admin" ? <CompanyAdminBox /> : <CompanyBox />}
-      {role === "admin" ? <EvaluateAdminBox /> : <EvaluateBox />}
+      {userInfo?.role === "admin" ? <CompanyAdminBox /> : <CompanyBox />}
+      {userInfo?.role === "admin" ? <EvaluateAdminBox /> : <EvaluateBox />}
     </div>
-  );
+  );``
 };
 
 export default CompanyScreen;

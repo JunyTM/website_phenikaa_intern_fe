@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/Store";
 import { useNavigate } from "react-router-dom";
@@ -15,15 +15,21 @@ const Role: React.FC<{ role: string[]; children: React.FC }> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userCredentials = useSelector((state: RootState) => state.auth.user);
-  console.log(userCredentials);
   if (role === undefined || userCredentials === null) {
     thunkFunctionAuth.refesh(navigate, dispatch);
   }
 
-  var checkRole = role.find((r: string) => r === userCredentials?.role);
+  var checkRole;
+  for (let i = 0; i < Role.length; i++) {
+    if (role[i] === userCredentials?.role) {
+      checkRole = true;
+      break;
+    }
+  }
+
   return (
     <React.Fragment>
-      {checkRole !== undefined ? <Children /> :  <Loading />}
+      {checkRole !== undefined ? <Children /> : <Loading />}
     </React.Fragment>
   );
 };

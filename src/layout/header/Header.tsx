@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 import Cookies from "js-cookie";
@@ -6,15 +6,12 @@ import { useNavigate, Link } from "react-router-dom";
 import * as authSlice from "../../redux/authSlice/authenSclice";
 import { RootState } from "../../redux/Store";
 import { useSelector, useDispatch } from "react-redux";
-import { UserReponse } from "../../model/user";
 import { ROUTE } from "../../constants/router";
 
 const Header: React.FC<any> = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userName = useSelector(
-    (state: RootState) => state.auth.user?.Profile?.phone
-  );
+  const userInfo = useSelector((state: RootState) => state.auth.user);
   const handelSignOut = () => {
     Cookies.remove("AccessToken");
     Cookies.remove("RefreshToken");
@@ -43,11 +40,9 @@ const Header: React.FC<any> = () => {
       </div>
 
       <div className="ml-28 w-30% h-full flex flex-row items-center justify-between">
-        <p className="text-md font-semibold opacity-90">
-          {userName ? userName : "Tô Kim Mạnh"}
-        </p>
+        <p className="text-md font-semibold opacity-90">{userInfo?.fullname}</p>
         <Button
-          className="w-28 h-8"
+          className="w-28 h-8 hover:bg-slate-100 hover:text-blue-400 hover:font-bold"
           variant="light"
           color="blue"
           radius="md"

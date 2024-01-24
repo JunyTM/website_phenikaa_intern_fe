@@ -47,5 +47,5 @@ export const ROUTE = {
 
   ERROR: {
     PATH: "/error",
-  }
+  },
 };
