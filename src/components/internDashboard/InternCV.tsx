@@ -1,10 +1,10 @@
 import React, { useState, useLayoutEffect } from "react";
-import { rem, TextInput } from "@mantine/core";
+import { rem, TextInput, Button } from "@mantine/core";
 import { IconFileCv } from "@tabler/icons-react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/Store";
 import { thunkFunctionJob } from "../../redux/jobSlice/job.action";
-import { Button } from "@material-tailwind/react";
+// import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { thunkFunctionRecruitment } from "../../redux/recuritment/recuritment.action";
 import { Recruitment } from "../../model/recruitment";
@@ -50,7 +50,7 @@ const InternCV: React.FC<any> = (props: any) => {
           Ứng tuyển ngay !!
         </h1>
       </div>
-
+      
       <p className="mt-2 ml-2 mb-10 font-extrabold">{jobDetail?.title}</p>
 
       {/* <FileInput
